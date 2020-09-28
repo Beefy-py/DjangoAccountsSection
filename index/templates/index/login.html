@@ -1,0 +1,27 @@
+{%extends 'index/base.html'%}
+{%load static%}
+{%load widget_tweaks%}
+{%block content%}
+<section class="form-container">
+    <article id="login-container">
+        <h1 style="font-size: xx-large;">Login</h1>
+        <form action="" id="login-form" method="POST">
+            {%csrf_token%}
+            <div class="field-wrapper">
+                {% render_field form.username.errors %}
+                {% render_field form.username.label_tag %}
+                {% render_field form.username placeholder='username...'%}
+            </div>
+            <div class="field-wrapper">
+                {% render_field form.password.errors %}
+                {% render_field form.password.label_tag %}
+                {% render_field form.password placeholder='password...' type='password'%}
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <aside>
+            Don't have an account? <a href="{% url 'user_register' %}">Register!</a>
+        </aside>
+    </article>
+</section>
+{%endblock content%}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel=icon href="{% static 'images/multy-user.png' %}" sizes="16x16" type="image/png">
+    <script src="https://kit.fontawesome.com/8e5bc578dd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>{{title}}</title>
+</head>
+<body>
+
+{% if messages %}
+    {%for message in messages%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-error" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <div class="alert alert-info" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <div class="alert alert-warning" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+ 
+    {%endfor%}
+{% endif %}
+
+{%block content%}
+{%endblock content%}
+<script>
+    $(document).ready(function(){window.setTimeout(function(){
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
+        
+    })
+</script>
+<script>
+    $(document).ready(function(){
+        $('.fa-bars').click(function(){
+            $(this).hide();
+            $('.fa-times').show();
+            $('#nav-logout').slideDown('fast');
+            $('#nav-username').slideDown('fast');
+            $('#nav-login').slideDown('fast');
+        })
+        $('.fa-times').click(function(){
+            $(this).hide();
+            $('.fa-bars').show();
+            $('#nav-logout').slideUp('fast');
+            $('#nav-username').slideUp('fast');
+            $('#nav-login').slideUp('fast');
+        })
+    });
+</script>
+</body>
+</html>

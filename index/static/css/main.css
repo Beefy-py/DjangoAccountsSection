@@ -1,0 +1,736 @@
+
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --bg-color:rgb(100, 130, 130);
+    --text-color1:rgb(48, 56, 63);
+    --text-color2:rgb(29, 95, 13);
+    --shadow-color:rgba(196, 243, 196, 0.4);
+    --placeholder-color:rgb(88, 139, 94);
+    --special-color:rgba(56, 24, 131, 0.8);
+    --alert-success:rgba(25, 117, 13, 0.5);
+    --alert-warning:rgba(255, 130, 13, 0.5);
+    --alert-info:rgba(10, 127, 223, 0.6);
+}
+
+::selection{
+    background-color: var(--text-color1);
+    color: var(--bg-color);
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color1);
+}
+
+.profile-body, .form-container{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    width: auto;
+}
+
+article{
+    box-shadow: -10px -10px 20px var(--shadow-color), 8px 8px 20px rgba(0, 0, 0, .2);
+    min-width: 350px;
+    min-height: 450px;
+    border-radius: 20px;
+    padding: 10px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+#link-all-users{
+    width: 10vw;
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    transition: .3s;
+    display: block;
+    background-color: var(--text-color1);
+    color: var(--bg-color);
+}
+
+article .field-wrapper {
+    width: 20vw;
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: -2px -2px 5px var(--shadow-color), 8px 8px 20px rgba(0, 0, 0, .2);
+}
+
+
+#link-all-users:hover{
+    box-shadow: -2px -2px 10px var(--shadow-color), 2px 5px 10px rgba(0, 0, 0, .4);
+}
+
+#link-all-users:focus{
+    transform: scale(.95);
+}
+
+
+article div a{
+    color: var(--text-color2);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1{
+    font-size: 60px;
+    text-align: center;
+}
+
+article p.status-normal{
+    color: var(--text-color2);
+}
+
+article p.status-staff{
+    color: var(--special-color);
+}
+
+
+.all-users article a{
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--text-color2);
+    color: var(--special-color);
+    display: block;
+    margin: 5px auto;
+    width: 40%;
+    transition: .3s;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    margin: 0 0 0 -80px;
+}
+
+.all-users article a:hover{
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, .4);
+}
+
+.all-users article a:active{
+    transform: scale(.94);
+}
+
+hr{
+    border: 1px solid var(--text-color2);
+    background-color:   var(--text-color2);
+}
+
+.all-users{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:10px;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#edit-user-btn{
+    color: white;
+    text-decoration: none;
+    background-color: var(--text-color2);
+    padding: 4px;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: .3s;
+}
+
+#edit-user-btn:hover, #edit-form input[type='submit']{
+    background-color: white;
+    color: var(--text-color2);
+}
+
+#edit-form input[type='submit']:hover{
+    background-color: var(--text-color2);
+    color: white;
+}
+
+
+#edit-form{
+    position: relative;
+    left: -10px;
+}
+
+#edit-form .field-wrapper{
+    border-radius: 10px;
+    padding: 0px;
+    box-shadow: none;
+}
+
+#edit-form .field-wrapper input{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: var(--shadow-color);
+    border-bottom: 3px solid var(--text-color2);
+    box-shadow: -2px -2px 5px var(--shadow-color), 8px 8px 20px rgba(0, 0, 0, .2);
+    transition: all .4s;
+}
+
+#edit-form .field-wrapper input:focus{
+    background-color: var(--text-color2);
+    color: white;
+    box-shadow: none;
+}
+
+#edit-form input[type='submit']{
+    transition: .3s;
+    border: none;
+    width: 40%;
+    display: block;
+    margin: 5px auto;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    position: relative;
+    left: 10px;
+}
+
+.pagination{
+   text-align: center;
+   margin: 40px auto 80px auto;
+   background-color:var(--text-color1);
+   padding: 5px;
+   box-shadow:8px 8px 20px rgba(0, 0, 0, .4) ;
+   width: 30%;
+   border-radius: 20px;
+   color: var(--bg-color);
+}
+
+.pagination .fas{
+    color: var(--text-color2);
+    padding: 8px;
+    transition: .4s;
+} 
+
+.pagination .fas:hover{
+    background-color: var(--shadow-color);
+    border-radius: 2px;
+} 
+
+.pagination #first, .pagination #last{
+    color: var(--shadow-color);
+    font-weight: bold;
+}
+
+#login-form .field-wrapper{
+    display: block;
+}
+
+#login-form .field-wrapper input{
+    outline: none;
+    background-color: var(--shadow-color);
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    transition:all .4s;
+}
+
+#login-form .field-wrapper input:focus{
+border-radius: 5px;
+}
+
+#login-form .field-wrapper label{
+    font-weight: bold;
+}
+
+#logout-container{
+    width: 60%;
+    min-height: fit-content;
+}
+
+#logout-container h1{
+    font-size: 2.5rem;
+}
+
+#logout-btn{
+    width: 50%;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: var(--text-color2);
+    cursor: pointer;
+    transition: .3s;
+    outline: none;
+    float: left;
+    width: 50%;
+}
+
+#logout-btn:hover{
+    transform: scale(1.15);
+}
+
+#logout-form + a{
+    width: 50%;
+    display: block;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--shadow-color);
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    transition: .3s;
+}
+
+#logout-form + a:hover{
+    transform: scale(.85);
+}
+
+.form-container article{
+    min-height: 30vh;
+}
+
+#login-form input[type='submit']{
+    display: block;
+    font-weight: bold;
+    width: 40%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--text-color1);
+    color: var(--bg-color);
+    outline: none;
+    margin: 20px auto;
+    transition: .4s;
+}
+
+#login-form input[type='submit']:hover{
+    transform: scale(.95);
+}
+
+.form-container article aside{
+    color: var(--shadow-color);
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-container article aside a{
+    color: var(--text-color2);
+    text-decoration: none;
+}
+
+#register-form-container{
+    min-height: 40vh;
+}
+
+#register-form .fields{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 20px;
+    box-shadow: none;
+}
+
+#register-form .field-wrapper{
+    border-radius: 5px;
+}
+
+#register-form input:not([type='submit']){
+    float: left;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--shadow-color);
+    padding: 5px;
+    outline: none;
+    transition: .4s;
+}
+#register-form input:not([type='submit']):focus{
+    border-radius: 20px;
+}
+
+#register-form label{
+    float: left;
+    font-weight: bold;
+}
+
+#register-form input[type='submit']{
+    display: block;
+    border: none;
+    grid-column: 1/3;
+    width: 40%;
+    margin:10px auto;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: var(--text-color1);
+    color: var(--shadow-color);
+    padding: 5px;
+    outline: none;
+    transition: .4s;
+}
+
+#register-form input[type='submit']:hover{
+    background-color: var(--shadow-color);
+    color: var(--text-color2);
+    border: none;
+    padding: 7px;
+}
+
+
+.form-container input::placeholder{
+    color: var(--placeholder-color);
+}
+
+#id_confirm_password{
+    width: 40%;
+}
+
+nav{
+    width: 85%;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, .4);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 0px auto 2rem;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    background-color: var(--text-color1);
+}
+
+nav a{
+    text-decoration: none;
+    align-self: center;
+    color: var(--shadow-color);
+    text-align: center;
+}
+
+nav a:first-child{
+    font-size: 2.5rem;
+    color: var(--text-color2);
+    font-weight: bold;
+    padding: 10px;
+}
+
+nav .fas{
+    display: none;
+    cursor: pointer;
+}
+
+#nav-username, #nav-login{
+    grid-column: 11/13;
+}
+
+#nav-username{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#nav-logout{
+    grid-column: 10/11;
+}
+
+#nav-username:hover, #nav-login:hover, #nav-logout:hover{
+    transition: all .2s;
+    transform: scale(.91);
+}
+
+.alert{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 30%;
+    color: white;
+    position: absolute;
+    right: 8%;
+    top: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 10;
+}
+
+.alert-success{
+    background-color: var(--alert-success);
+}
+
+.alert-warning{
+    background-color: var(--alert-warning);
+}
+
+.alert-info{
+    background-color: var(--alert-info);
+}
+
+.errorlist li{
+    color: rgb(80, 7, 7);
+}
+
+#register-form .errorlist{
+    background-color: var(--text-color1);
+    border-radius: 5px;
+    
+}
+
+
+#register-form .error-container{
+    list-style: none;
+    border-radius: 10px;
+    padding: 5px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 5vh;
+}
+
+#register-form .error-container li{
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(236, 71, 71);
+    padding: 5px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, .3);
+    background-color: var(--text-color1);
+    border-radius: 3px;
+}
+
+#register-form .errorlist li{
+    color: rgb(184, 94, 94);
+    font-weight: 400;
+    box-shadow: none;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    :root{
+        --bg-color: rgb(25, 114, 70);
+        --text-color1:rgb(17, 49, 3);
+        --text-color2: rgb(10, 170, 58);
+        --shadow-color: rgba(181, 240, 199, .4);
+        --placeholder-color:rgb(63, 112, 43);
+        --alert-bg:rgba(93, 231, 134, 0.5);
+    }
+
+    .all-users{
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 20px;
+    }
+
+    #register-form input[type='submit']{
+        color:var(--placeholder-color)
+    }
+    #login-form .field-wrapper{
+        width: 80%;
+        margin-bottom: 25px;
+    }
+
+        
+    #id_confirm_password{
+        width: 80%;
+    }
+
+    .errorlist{
+        bottom: 120px;
+        right: 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 768px) {
+    .all-users{
+        grid-gap: 10px;
+        width: 90%;
+        margin-left: -2px;
+    }
+
+    #register-form .error-container{
+        width: 37vw;
+        position: absolute;
+        right: -40%;
+    }
+
+    #edit-form .field-wrapper{
+        width: 80%;
+    }
+
+    nav{
+        width: auto;
+    }
+
+    #nav-username, #nav-login{
+        grid-column: 10/13;
+    }
+    
+    #nav-username{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    
+    #nav-logout{
+        grid-column: 9/10;
+    }
+
+    h1{
+        font-size: 40px;
+    }
+
+    #login-container{
+        min-height: 60vh;
+    }
+
+    #register-form-container{
+        height: 90vh;
+    }
+
+    #register-form .fields{
+        display: block;
+    }
+
+    #register-form .field-wrapper {
+        border-radius: 5px;
+        height: 30px;
+        margin-bottom: 20px;
+        width: 40vw;
+    }
+
+    #register-form .field-wrapper input{
+        float: right;
+    }
+
+    #register-form .fields .field-wrapper input[name='confirm_password']{
+        width: 44.5%;
+    }
+
+    .pagination{
+        width: 40%;
+    }
+    
+    #link-all-users{
+        width: 20vw;
+        
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .all-users{
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .all-users article{
+        width: 107%;
+        margin: -.5px;
+        height: 400px;
+    }
+
+    #nav-logout, #nav-login, #nav-username{
+        display: none;
+        grid-column: 1;
+        
+    }
+    
+    #nav-username{
+        font-weight: bold;
+        font-size: large;
+    }
+
+    #nav-logout, #nav-login{
+        font-size: larger;
+    }
+    
+    nav .fas{
+        display: block;
+        color: var(--text-color2);
+        font-size: xxx-large;
+        position: relative;
+        right: -50vw;
+        top: 12px;
+    }
+
+    nav .fa-times{
+        display: none;
+    }
+
+    #register-form .error-container{
+        width: 40vw;
+        position: absolute;
+        right: 0;
+    }
+
+
+    :root{
+        --bg-color: rgb(2, 99, 46);
+        --text-color1:rgb(14, 49, 78);
+        --text-color2: rgb(10, 138, 170);
+        --shadow-color: rgba(77, 129, 93, 0.4);
+        --placeholder-color:rgb(3, 81, 83);
+    }
+
+    h1{
+        font-size: 30px;
+    }
+    
+
+    #register-form-container{
+        height: 96vh;
+    }
+
+    
+    #login-container{
+        width: 20vw;
+    }
+
+    #register-form .field-wrapper input{
+        width: 90%;
+    }
+
+    #register-form .field-wrapper{
+        width: 80%;
+    }
+
+    #register-form .fields .field-wrapper input[name='confirm_password'] {
+        width: 90%;
+    }
+
+    #register-form input[type='submit']{
+        
+        width: 60%;
+        background-color: var(--shadow-color);
+        color: var(--text-color2);
+        border: none;
+        
+    }
+
+    #register-form input[type='submit']:hover{
+        background-color: var(--text-color1);
+        color: var(--text-color2);
+    }
+
+    #register-form .field-wrapper{
+        margin-bottom: 30px;
+    }
+
+    .form-container article aside{
+        color: var(--text-color1);
+    }
+
+        
+    .pagination{
+        width: 70%;
+    }
+
+    #link-all-users{
+        width: 25vw;
+        
+    }
+ 
+    
+}
+
+@media only screen and (max-width: 376px){
+
+    body{
+        display: none;
+        background-color: black;
+        color: white;
+    }
+
+    .username{
+        font-size: 21px;
+    }
+
+   
+}

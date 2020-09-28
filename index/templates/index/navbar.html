@@ -1,0 +1,11 @@
+<nav>
+    <a href="{% url 'all_users'%}">Index</a>
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+    {% if user.is_authenticated %}
+        <a id='nav-logout' href="{% url 'user_logout'%}">Logout</a>
+        <a id='nav-username' href="{% url 'profile' user.id %}">{{user.username}}</a>
+    {%else%}
+        <a id='nav-login' href="{%url 'user_login' %}">Login</a>
+    {%endif%}
+</nav>

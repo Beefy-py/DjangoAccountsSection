@@ -1,0 +1,66 @@
+{%extends 'index/base.html'%}
+{%load static%}
+{%load widget_tweaks%}
+{%block content%}
+<section class="form-container">
+    <article id="register-form-container">
+        <h1 style="font-size: xx-large;">Register</h1>
+        <form action="" id="register-form" method="POST">
+            {%csrf_token%}
+            {{form.errors}}
+            <!--
+            {% if form.errors %}
+            <section class="errors-container">
+            {% for f, es in form.errors.items %}
+            <div class="error" id="error{{forloop.counter}}">
+                {% for e in es %}
+                    <span class="title">
+                        <span>{{f}}</span>
+                        <i class="icon"></i>
+                    </span>
+                    <div class="error-text">
+                        {{e}}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            </section>
+            {% endif %}
+            -->
+
+            <div class="fields" style="width: fit-content;">
+                <div class="field-wrapper">
+                    {% render_field form.username.label_tag %}
+                    {% render_field form.username placeholder='username...'%}
+                </div>
+                <div class="field-wrapper">
+                    {% render_field form.email.label_tag %}
+                    {% render_field form.email placeholder='email...'%}
+                </div>
+                <div class="field-wrapper">
+                    {% render_field form.first_name.label_tag %}
+                    {% render_field form.first_name placeholder='lastname...'%}
+                </div>
+                <div class="field-wrapper">
+                    {% render_field form.last_name.label_tag %}
+                    {% render_field form.last_name placeholder='lastname...'%}
+                </div>
+                <div class="field-wrapper">
+                    {% render_field form.password.label_tag %}
+                    {% render_field form.password placeholder='password...' type='password'%}
+                </div>
+                <div class="field-wrapper">
+                    {% render_field form.confirm_password.label_tag %}
+                    {% render_field form.confirm_password placeholder='password again...' type='password'%}
+                </div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </article>
+</section>
+<script>
+    let a = document.getElementsByClassName('errorlist')[0]
+    a.classList.remove('errorlist')
+    a.classList.add('error-container')
+</script>
+{%endblock content%}

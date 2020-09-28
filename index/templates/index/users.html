@@ -1,0 +1,47 @@
+{%extends 'index/base.html'%}
+{%block content%}
+{%include 'index/navbar.html'%}
+<section class="all-users">
+    {%for user in page_obj%}
+    <article>
+        <h1 class="username">{{user.username}}</h1>
+        <hr>
+        <p><b>Email: </b><span class="email" class="">{{user.email}}</span></p>
+        <p><b>FirstName: </b><span class="first-name" class="">{{user.first_name}}</span></p>
+        <p><b>LastName: </b><span class="last-name" class="">{{user.last_name}}</span></p>
+        <p><b>Joined on: </b>{{user.date_joined}}</p>
+        <a href="{%url 'profile' user.id %}">More Info</a>
+    </article>
+    {%endfor%}
+</section>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" id="first">first</a>
+            <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" id="last">last</a>
+        {% endif %}
+    </span>
+</div>
+<script type="text/javascript">
+    let users = '{{users}}' 
+
+   
+    for(let username of document.getElementsByClassName('username')){
+        if (username.textContent.length >= 15 && username.textContent.length <= 20 ){
+            username.style.fontSize = '30px'
+        }else if (username.textContent.length >= 10 && username.textContent.length <= 14 ){
+            username.style.fontSize = '45px'
+        }
+    }
+</script>
+{%endblock content%}

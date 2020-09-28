@@ -1,0 +1,27 @@
+{%extends 'index/base.html'%}
+{%load static%}
+{%block content%}
+<section class="profile-body">
+    <article>
+        <h1 id="username" class="">{{user.username}}</h1>
+        <hr id="line">
+        {%if user.username == request.user.username %}
+        <a id="edit-user-btn" href="{% url 'edit_user'%}">Edit <i class="fas fa-user-edit"></i></a>
+        {%endif%}
+    
+        <p><b>Email: </b><span id="email" class="">{{user.email}}</span></p>
+        <p><b>FirstName: </b><span id="first-name" class="">{{user.first_name}}</span></p>
+        <p><b>LastName: </b><span id="last-name" class="">{{user.last_name}}</span></p>
+        <p><b>Joined on: </b>{{user.date_joined}}</p>
+        {%if user.is_staff%}
+        <p class="status-staff"><b>Status:</b> Staff member</p>
+        {%else%}
+        <p class="status-normal"><b>Status:</b> Normal member</p>
+        {%endif%}
+        <div >
+            <a href="{% url 'all_users'%}" id="link-all-users">See All Users</a>
+        </div>
+    </article>
+    
+</section>
+{%endblock content%}
