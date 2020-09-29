@@ -498,7 +498,7 @@ nav .fas{
 }
 
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1025px) {
     :root{
         --bg-color: rgb(25, 114, 70);
         --text-color1:rgb(17, 49, 3);
@@ -506,6 +506,10 @@ nav .fas{
         --shadow-color: rgba(181, 240, 199, .4);
         --placeholder-color:rgb(63, 112, 43);
         --alert-bg:rgba(93, 231, 134, 0.5);
+    }
+
+    .all-users article{
+        height: 50vh;
     }
 
     .all-users{
