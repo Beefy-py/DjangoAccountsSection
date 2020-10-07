@@ -1,3 +1,5 @@
+import string
+
 from django import forms
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
@@ -12,10 +14,34 @@ class PersonRegisterForm(forms.Form):
     first_name = forms.CharField(min_length=2, max_length=50)
     last_name = forms.CharField(min_length=2, max_length=50)
 
+    def clean_username(self):
+        cd = self.cleaned_data
+        if not cd['username'].isalnum():
+            self.add_error('username', f'The username must only contain letter and numbers!')
+            return ''
+        else:
+            return cd['username']
+
+    def clean_first_name(self):
+        cd = self.cleaned_data
+        if not cd['first_name'].isalpha():
+            self.add_error('first_name', f'FirstName can only contain letters!')
+            return ''
+        else:
+            return cd['first_name']
+
+    def clean_last_name(self):
+        cd = self.cleaned_data
+        if not cd['last_name'].isalpha():
+            self.add_error('last_name', f'LastName can only contain letters!')
+            return ''
+        else:
+            return cd['last_name']
+
     def clean_confirm_password(self):
         cd = self.cleaned_data
         if cd['password'] != cd['confirm_password']:
-            self.add_error('confirm_password', f'The passwords do not match')
+            self.add_error('confirm_password', f'The passwords do not match!')
             return ''
         else:
             return cd['confirm_password']
