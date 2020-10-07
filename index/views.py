@@ -100,7 +100,7 @@ class AllUsers(LoginRequiredMixin, ListView):
     redirect_field_name = 'user_login'
     model = Person
     template_name = 'index/users.html'
-    paginate_by = 6
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

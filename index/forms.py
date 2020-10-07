@@ -5,7 +5,7 @@ from .models import Person
 
 
 class PersonRegisterForm(forms.Form):
-    username = forms.CharField(min_length=2, max_length=20, required=True)
+    username = forms.CharField(min_length=2, max_length=14, required=True)
     password = forms.CharField(min_length=8, max_length=100, required=True)
     confirm_password = forms.CharField(min_length=8, max_length=100, label='ConfirmPassword')
     email = forms.EmailField(min_length=8, max_length=100, required=True)
@@ -22,7 +22,7 @@ class PersonRegisterForm(forms.Form):
 
 
 class PersonLoginForm(forms.Form):
-    username = forms.CharField(min_length=2, max_length=20, required=True)
+    username = forms.CharField(min_length=2, max_length=14, required=True)
     password = forms.CharField(min_length=8, max_length=100, required=True)
 
     def clean_username(self):

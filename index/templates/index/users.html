@@ -4,13 +4,13 @@
 <section class="all-users">
     {%for user in page_obj%}
     <article>
-        <h1 class="username">{{user.username}}</h1>
-        <hr>
-        <p><b>Email: </b><span class="email" class="">{{user.email}}</span></p>
-        <p><b>FirstName: </b><span class="first-name" class="">{{user.first_name}}</span></p>
-        <p><b>LastName: </b><span class="last-name" class="">{{user.last_name}}</span></p>
+        <a href="{%url 'profile' user.id %}" class="username">{{user.username}}</a>
+        {%if user.is_staff%}
+        <p class="status-staff"><b>Status:</b> Staff member</p>
+        {%else%}
+        <p class="status-normal"><b>Status:</b> Normal member</p>
+        {%endif%}
         <p><b>Joined on: </b>{{user.date_joined}}</p>
-        <a href="{%url 'profile' user.id %}">More Info</a>
     </article>
     {%endfor%}
 </section>
@@ -32,16 +32,4 @@
         {% endif %}
     </span>
 </div>
-<script type="text/javascript">
-    let users = '{{users}}' 
-
-   
-    for(let username of document.getElementsByClassName('username')){
-        if (username.textContent.length >= 15 && username.textContent.length <= 20 ){
-            username.style.fontSize = '30px'
-        }else if (username.textContent.length >= 10 && username.textContent.length <= 14 ){
-            username.style.fontSize = '45px'
-        }
-    }
-</script>
 {%endblock content%}
