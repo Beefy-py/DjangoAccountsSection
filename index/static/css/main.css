@@ -36,6 +36,7 @@ font-family: 'Righteous', cursive;
 body{
     background-color: var(--bg-color);
     color: var(--text-color1);
+    overflow-x: hidden;
 }
 
 .profile-body, .form-container{
@@ -246,6 +247,11 @@ hr{
     display: block;
 }
 
+#login-container aside p{
+    margin: 0;
+    padding: 0;
+}
+
 #login-form .field-wrapper input{
     outline: none;
     background-color: var(--shadow-color);
@@ -334,6 +340,22 @@ border-radius: 5px;
 .form-container article aside a{
     color: var(--text-color2);
     text-decoration: none;
+}
+
+#you-can-sign-in-now{
+    font-size: xx-large;
+    text-decoration: none;
+    background: var(--text-color1);
+    color: var(--bg-color);
+    border-radius: 10px;
+    padding: 15px;
+    transition: .4s;
+}
+
+#you-can-sign-in-now:hover{
+    background-color: var(--bg-color);
+    color: var(--text-color1);
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, .4);
 }
 
 

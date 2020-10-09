@@ -18,7 +18,9 @@ class PersonRegisterForm(forms.Form):
         cd = self.cleaned_data
         if not cd['username'].isalnum():
             self.add_error('username', f'The username must only contain letter and numbers!')
-            return ''
+        if Person.objects.filter(username=cd['username']).exists():
+            print('User exist!!')
+            self.add_error('username', f'That username is already registered!')
         else:
             return cd['username']
 
