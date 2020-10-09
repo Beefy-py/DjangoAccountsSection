@@ -13,6 +13,15 @@ from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user
 from django.contrib import messages
 
+staff_members = [i.email for i in Person.objects.all() if i.is_staff]
+send_mail(
+    '500 Error',
+    'There was an InternalServerError in our website. Let\'s fix it!',
+    'testkenny00@gmail.com',
+    staff_members,
+    fail_silently=False,
+)
+
 
 # Create your views here.
 @unauthenticated_user
@@ -123,7 +132,7 @@ def error_500_view(request):
         '500 Error',
         'There was an InternalServerError in our website. Let\'s fix it!',
         'testkenny00@gmail.com',
-        [staff_members],
+        staff_members,
         fail_silently=False,
     )
     context = {
