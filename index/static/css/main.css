@@ -531,11 +531,6 @@ nav .fas{
     box-shadow: none;
 }
 
-.http-error-container{
-    background-color: red;
-    width: 40%;
-}
-
 
 @media only screen and (max-width: 1025px) {
     :root{

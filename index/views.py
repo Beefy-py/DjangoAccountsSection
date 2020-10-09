@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from .models import Person, PersonUpdateForm
 from django.contrib.auth import authenticate, login, logout
@@ -117,6 +118,14 @@ def error_404_view(request, exception):
 
 
 def error_500_view(request):
+    staff_members = [i.email for i in Person.objects.all() if i.is_staff]
+    send_mail(
+        '500 Error',
+        'There was an InternalServerError in our website. Let\'s fix it!',
+        'testkenny00@gmail.com',
+        [staff_members],
+        fail_silently=False,
+    )
     context = {
         'title': 'InternalServerError'
     }
