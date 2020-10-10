@@ -66,4 +66,13 @@
     a.classList.remove('errorlist')
     a.classList.add('error-container')
 </script>
+<script>
+    $(function(){
+
+    $('li').click(function(){
+        $(this).fadeOut(500);
+    })
+
+    });
+</script>
 {%endblock content%}
