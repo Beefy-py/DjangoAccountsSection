@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('index.urls'))
 ]
 
+handler403 = 'index.views.error_403_view'
 handler404 = 'index.views.error_404_view'
 handler500 = 'index.views.error_500_view'

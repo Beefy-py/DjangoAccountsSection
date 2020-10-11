@@ -4,7 +4,11 @@
 <section class="all-users">
     {%for user in page_obj%}
     <article>
+        {%if request.user.is_staff%}
         <a href="{%url 'profile' user.id %}" class="username">{{user.username}}</a>
+        {%else%}
+        <span class="username" style="cursor: default;">{{user.username}}</span>
+        {%endif%}
         {%if user.is_staff%}
         <p class="status-staff"><b>Status:</b> Staff member</p>
         {%else%}

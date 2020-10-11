@@ -4,12 +4,12 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from .models import Person, PersonUpdateForm
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from .forms import PersonRegisterForm, PersonLoginForm
 from django.core.paginator import Paginator
 from django.views.generic import ListView, FormView, UpdateView
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .decorators import unauthenticated_user
 from django.contrib import messages
 
@@ -71,11 +71,14 @@ def user_logout(request):
 @login_required(redirect_field_name='user_login', login_url='/login/')
 def profile(request, pk):
     user = Person.objects.get(id=pk)
-    context = {
-        'user': user,
-        'title': 'Profile'
-    }
-    return render(request, 'index/profile.html', context)
+    if request.user.is_staff or request.user.username == user.username:
+        context = {
+            'user': user,
+            'title': 'Profile'
+        }
+        return render(request, 'index/profile.html', context)
+    else:
+        return error_403_view(request, 403)
 
 
 def update_person(request):
@@ -108,6 +111,13 @@ class AllUsers(LoginRequiredMixin, ListView):
         context['users'] = Person.objects.all()
         context['title'] = 'All Users'
         return context
+
+
+def error_403_view(request, exception):
+    context = {
+        'title': 'PermissionDenied'
+    }
+    return render(request, '403.html', context)
 
 
 def error_404_view(request, exception):
