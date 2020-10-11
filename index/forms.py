@@ -19,24 +19,32 @@ class PersonRegisterForm(forms.Form):
         if not cd['username'].isalnum():
             self.add_error('username', f'The username must only contain letter and numbers!')
         if Person.objects.filter(username=cd['username']).exists():
-            print('User exist!!')
             self.add_error('username', f'That username is already registered!')
         else:
             return cd['username']
 
+    def clean_email(self):
+        cd = self.cleaned_data
+        if Person.objects.filter(email=cd['email'].lower()).exists():
+            self.add_error('email', f'Someone already uses that email!')
+        else:
+            return cd['email']
+
     def clean_first_name(self):
         cd = self.cleaned_data
-        if not cd['first_name'].isalpha():
-            self.add_error('first_name', f'FirstName can only contain letters!')
-            return ''
+        for i in cd['first_name']:
+            if i in string.punctuation:
+                self.add_error('first_name', f'FirstName must not contain symbols!')
+                return ''
         else:
             return cd['first_name']
 
     def clean_last_name(self):
         cd = self.cleaned_data
-        if not cd['last_name'].isalpha():
-            self.add_error('last_name', f'LastName can only contain letters!')
-            return ''
+        for i in cd['last_name']:
+            if i in string.punctuation:
+                self.add_error('last_name', f'LastName must not contain symbols!')
+                return ''
         else:
             return cd['last_name']
 
