@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY_FOR_LOGIN_SYSTEM')
+SECRET_KEY = os.getenv(
+    'SECRET_KEY_FOR_LOGIN_SYSTEM')  # Same var cuz I don't want to create a another env var with the same value
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index.apps.IndexConfig',
+    'blog.apps.BlogConfig',
     'widget_tweaks',
 ]
 
@@ -117,7 +119,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = 'user_login'
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

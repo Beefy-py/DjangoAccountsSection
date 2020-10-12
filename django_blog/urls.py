@@ -18,7 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('index.urls'))
+    path('users/', include('index.urls')),
+    path('', include('blog.urls'))
 ]
 
 handler403 = 'index.views.error_403_view'
