@@ -1,12 +1,50 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel=icon href="{% static 'images/multy-user.png' %}" sizes="16x16" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Amaranth&family=Fredoka+One&family=Hammersmith+One&family=Itim&family=Josefin+Sans&family=Mitr:wght@300&family=Palanquin+Dark&family=Righteous&display=swap" rel="stylesheet"><script src="https://kit.fontawesome.com/8e5bc578dd.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <title>{{title}}</title>
 </head>
 <body>
-    {%block body%}
-    {%endblock body%}
+    
+    {% if messages %}
+    {%for message in messages%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-error" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <div class="alert alert-info" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <div class="alert alert-warning" role="alert">
+            {{message}}
+        </div>
+    {%endif%}
+
+    {%endfor%}
+    {% endif %}
+    {%include 'index/navbar.html'%}
+    {%block content%}
+    {%endblock content%}
+    <script src="{% static 'js/alertFadeOut.js' %}"></script>
+    <script src="{% static 'js/navBar.js'%}"></script>
 </body>
 </html>

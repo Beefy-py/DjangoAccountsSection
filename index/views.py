@@ -47,7 +47,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Successfully logged in as {request.user}!')
-                return redirect('all_users')
+                return redirect('post_list')
 
     else:
         form = PersonLoginForm()
@@ -58,17 +58,17 @@ def user_login(request):
     return render(request, 'index/login.html', context)
 
 
-@login_required(redirect_field_name='user_login', login_url='/login/')
+@login_required(redirect_field_name='user_login', login_url='user_login')
 def user_logout(request):
     if request.method == 'POST':
         user = request.user
         logout(request)
         messages.warning(request, f'Logged out as {user}!')
-        return redirect('all_users')
+        return redirect('post_list')
     return render(request, 'index/logout.html')
 
 
-@login_required(redirect_field_name='user_login', login_url='/login/')
+@login_required(redirect_field_name='user_login')
 def profile(request, pk):
     user = Person.objects.get(id=pk)
     if request.user.is_staff or request.user.username == user.username:
@@ -81,6 +81,7 @@ def profile(request, pk):
         return error_403_view(request, 403)
 
 
+@login_required(redirect_field_name='user_login')
 def update_person(request):
     if request.method == 'POST':
         form = PersonUpdateForm(request.POST, instance=request.user)
@@ -100,7 +101,7 @@ def update_person(request):
 
 
 class AllUsers(LoginRequiredMixin, ListView):
-    login_url = '/login/'
+    login_url = 'user_login'
     redirect_field_name = 'user_login'
     model = Person
     template_name = 'index/users.html'

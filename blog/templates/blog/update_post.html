@@ -1,0 +1,23 @@
+{%extends 'blog/base.html'%}
+{%load widget_tweaks%}
+{%block content%}
+<section class="form-container">
+    <article id="post-update">
+        <h1 style="font-size: xx-large;">Edit</h1>
+        <form action="" id="login-form" method="POST">
+            {%csrf_token%}
+            <div class="field-wrapper">
+                {% render_field form.title.errors %}
+                {% render_field form.title.label_tag %}
+                {% render_field form.title%}
+            </div>
+            <div class="field-wrapper">
+                {% render_field form.body.errors %}
+                {% render_field form.body.label_tag %}
+                {% render_field form.body %}
+            </div>
+            <input type="submit" value="Update">
+        </form>
+    </article>
+</section>
+{%endblock content%}

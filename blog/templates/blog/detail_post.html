@@ -1,0 +1,18 @@
+{%extends 'blog/base.html'%}
+{%block content%}
+<div class="post-detail">
+    <h2>{{ object.title }}</h2>
+    <span>by {{ object.author }}, posted on {{ object.posted }}</span>
+    <p>{{ object.body }}</p>
+    <hr>
+    {%if request.user == object.author%}
+    <div>
+        <span><i class="far fa-edit"></i><a href="{% url 'update_post' post.pk%}" style="color: green;">Edit</a></span>
+        <span><i class="fas fa-trash"></i><a href="{% url 'delete_post' post.pk %}" style="color: #ec3e3e;">Delete</a></span>
+    </div>
+    {%endif%}
+    <p>Back to <a href="{% url 'post_list' %}">All posts</a>.
+    </p>
+</div>
+   
+{%endblock content%}

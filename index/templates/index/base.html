@@ -44,32 +44,7 @@
 
 {%block content%}
 {%endblock content%}
-<script>
-    $(document).ready(function(){window.setTimeout(function(){
-        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-            $(this).remove();
-        });
-    }, 4000);
-        
-    })
-</script>
-<script>
-    $(document).ready(function(){
-        $('.fa-bars').click(function(){
-            $(this).hide();
-            $('.fa-times').show();
-            $('#nav-logout').slideDown('fast');
-            $('#nav-username').slideDown('fast');
-            $('#nav-login').slideDown('fast');
-        })
-        $('.fa-times').click(function(){
-            $(this).hide();
-            $('.fa-bars').show();
-            $('#nav-logout').slideUp('fast');
-            $('#nav-username').slideUp('fast');
-            $('#nav-login').slideUp('fast');
-        })
-    });
-</script>
+<script src="{% static 'js/alertFadeOut.js' %}"></script>
+<script src="{% static 'js/navBar.js'%}"></script>
 </body>
 </html>

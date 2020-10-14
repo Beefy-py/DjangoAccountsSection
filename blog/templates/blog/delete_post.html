@@ -1,0 +1,15 @@
+{%extends 'blog/base.html'%}
+{%block content%}
+<section class="form-container">
+    <article id="logout-container">
+        <h1>Are you sure you want to delete "{{ post.title }}"?</h1>
+        <div class="action-btns">
+            <form action="" id="logout-form" method="POST">
+                {%csrf_token%}
+                <input id="logout-btn" type="submit" value="Yes">
+            </form>
+            <a href="{% url 'detail_post' post.id%}">Cancel</a>
+        </div>
+    </article>
+</section>
+{%endblock content%}

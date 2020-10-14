@@ -450,6 +450,14 @@ nav .fas{
     cursor: pointer;
 }
 
+#nav-home{
+    grid-column: 8;
+}
+
+#nav-cpost, #nav-register{
+    grid-column: 9;
+}
+
 #nav-username, #nav-login{
     grid-column: 11/13;
 }
@@ -463,7 +471,12 @@ nav .fas{
     grid-column: 10/11;
 }
 
-#nav-username:hover, #nav-login:hover, #nav-logout:hover{
+#nav-register{
+    grid-column: 10;
+    grid-row: 1;
+}
+
+nav a:hover{
     transition: all .2s;
     transform: scale(.91);
 }
@@ -529,6 +542,72 @@ nav .fas{
     color: rgb(184, 94, 94);
     font-weight: 400;
     box-shadow: none;
+}
+
+#all-posts{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.post-container{
+    margin: 3rem 0 5rem 0;
+    padding: 1rem;
+}
+
+.post-container span,.post-detail span{
+    opacity: .8;
+    font-size: .8rem;
+}
+
+.post-container hr, .post-detail hr{
+    opacity: .3;
+}
+
+.post-title{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color2);
+}
+
+.post-detail{
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.post-detail h2{
+    margin: 0;
+}
+
+.post-detail div{
+    background-color: var(--text-color1);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post-detail a:last-child{
+    text-decoration: none;
+    color: var(--text-color2);
+}
+
+
+.post-detail div span:last-child{
+    grid-column: none;
+}
+
+.form-container textarea {
+    background-color: var(--shadow-color);
+    border-radius: 15px;
+    transition: .4s;
+    max-width: max-content;
+    min-width: max-content;
+}
+
+
+.form-container textarea:focus{
+    outline: none;
+    border-radius: 5px;
 }
 
 
@@ -627,23 +706,26 @@ nav .fas{
 
     nav{
         width: auto;
+        grid-template-rows: auto;
     }
 
+    #nav-home{
+        grid-column: end;
+        grid-row: 2;
+    }
 
-    #nav-logout, #nav-login, #nav-username{
-        display: none;
-        
+    #nav-cpost, #nav-register{
+        grid-column: end;
+        grid-row: 3;
     }
     
     #nav-username{
-        font-weight: bold;
-        font-size: large;
-        grid-area: 4 / end / auto / end;
+        grid-area: 6 / end / auto / end;
+        margin-top: 1rem;
     }
 
     #nav-logout, #nav-login{
-        font-size: larger;
-        grid-area: 3 / end / auto / end;
+        grid-area: 4 / end / auto / end;
     }
     
     nav .fas{
