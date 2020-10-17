@@ -2,11 +2,22 @@
 {%block content%}
 <section id="all-posts">
     {%for post in object_list %}
-    <div class="post-container">
-        <a href="{% url 'detail_post' post.id %}" class="post-title">{{post.title}}</a>
-        <span> | by {{post.author}} on {{post.posted}}</span>
-        <hr>
-        <div>{{post.body}}</div>
+    <div class="card-blog">
+        <div class="header-image">
+            {%if post.header_image%}
+                <img class="blog-img" src="{{post.header_image.url}}" alt="Header image for the post">
+            {%endif%}
+        </div>
+        <div class="post-container">
+            <a href="{% url 'detail_post' post.id %}" class="post-title">{{post.title}}</a>
+            <span> | by {{post.author}} on {{post.posted}}</span>
+            <div class="bottom">
+                <hr>
+                <div>{{post.body|slice:"0:300"}}...</div>
+                <p class="last-edited">last edited on {{post.last_edited.day}}/{{post.last_edited.month}}/{{post.last_edited.year}} at {{post.last_edited.hour}}:{{post.last_edited.minute}}</p>
+                <a href="{% url 'detail_post' post.id%}">Read More</a>
+            </div>
+        </div>
     </div>
     {%endfor%}
 </section>
@@ -28,4 +39,5 @@
         {% endif %}
     </span>
 </div>
+<script src="static/js/blogReveal.js"></script>
 {%endblock content%}

@@ -17,8 +17,9 @@ font-family: 'Righteous', cursive;
 */
 
 :root{
-    --bg-color:rgb(100, 130, 130);
+    --bg-color:rgb(174, 199, 177);
     --text-color1:rgb(48, 56, 63);
+    --text-color1-transparenty:rgba(48, 56, 63,.8);
     --text-color2:rgb(29, 95, 13);
     --shadow-color:rgba(196, 243, 196, 0.4);
     --placeholder-color:rgb(88, 139, 94);
@@ -250,6 +251,8 @@ hr{
 #login-container aside p{
     margin: 0;
     padding: 0;
+    color: var(--text-color1);
+    opacity: .7;
 }
 
 #login-form .field-wrapper input{
@@ -331,8 +334,13 @@ border-radius: 5px;
     transform: scale(.95);
 }
 
+#login-form .field-wrapper input[name='header_image']{
+    background: none;
+}
+
 .form-container article aside{
-    color: var(--shadow-color);
+    color: var(--text-color1);
+    opacity: .7;
     text-align: center;
     margin-top: 25px;
 }
@@ -422,7 +430,7 @@ border-radius: 5px;
 
 nav{
     width: 85%;
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, .4);
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, .4);
     border-radius: 8px;
     padding: 10px;
     margin: 0px auto 2rem;
@@ -550,8 +558,15 @@ nav a:hover{
 }
 
 .post-container{
-    margin: 3rem 0 5rem 0;
+    position: absolute;
+    top: 60%;
+    bottom: 0px;
     padding: 1rem;
+    box-shadow: 3px 7px 20px rgba(0, 0, 0, .4);  
+    background-color: var(--text-color1);
+    color: var(--bg-color);
+    width: auto;
+    border-radius: 2rem;
 }
 
 .post-container span,.post-detail span{
@@ -564,14 +579,18 @@ nav a:hover{
 }
 
 .post-title{
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-decoration: none;
     color: var(--text-color2);
 }
 
 .post-detail{
     margin: 0 auto;
-    width: fit-content;
+    max-width: 70%;
+}
+
+.post-detail img{
+    width: 100%;
 }
 
 .post-detail h2{
@@ -591,9 +610,13 @@ nav a:hover{
     color: var(--text-color2);
 }
 
-
 .post-detail div span:last-child{
     grid-column: none;
+}
+
+.last-edited{
+    font-size: .8rem;
+    opacity: .7;
 }
 
 .form-container textarea {
@@ -610,10 +633,58 @@ nav a:hover{
     border-radius: 5px;
 }
 
+.card-blog{
+    position: relative;
+    margin: 4rem 0;
+    transition: .4s;
+    width: 100%;
+    border-radius: 2rem;
+    height: 110vh;
+}
+
+.card-blog .header-image{
+    background: black;
+    overflow: hidden;
+    border-radius: 2rem;
+    height: 110vh;
+}
+
+.blog-img{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1rem;
+    transition: .4s;
+}
+
+.card-blog:hover{
+    box-shadow: 2px 10px 12px rgba(0, 0, 0, .3);
+}
+
+.card-blog:hover .blog-img{
+    transform: scale(1.05);
+    opacity: .6;
+}
+
+.card-blog .bottom a{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 10rem;
+    color: var(--bg-color);
+    background-color: var(--text-color2);
+    transition: .4s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.card-blog .bottom a:hover{
+    transform: scale(0.95);
+}
 
 @media only screen and (max-width: 1025px) {
     :root{
-        --bg-color: rgb(25, 114, 70);
+        --bg-color: rgb(145, 185, 165);
         --text-color1:rgb(17, 49, 3);
         --text-color2: rgb(10, 170, 58);
         --shadow-color: rgba(181, 240, 199, .4);
@@ -784,7 +855,7 @@ nav a:hover{
 
 
     :root{
-        --bg-color: rgb(35, 117, 53);
+        --bg-color: rgb(218, 240, 222);
         --text-color1:rgb(4, 59, 45);
         --text-color2: rgb(18, 172, 164);
         --shadow-color: rgba(77, 129, 93, 0.4);

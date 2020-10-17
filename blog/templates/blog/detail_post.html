@@ -1,14 +1,18 @@
 {%extends 'blog/base.html'%}
 {%block content%}
 <div class="post-detail">
+    {%if object.header_image%}
+    <img src="{{object.header_image.url}}" alt="Header image for the post">
+    {%endif%}
     <h2>{{ object.title }}</h2>
     <span>by {{ object.author }}, posted on {{ object.posted }}</span>
     <p>{{ object.body }}</p>
+    <p class="last-edited">last edited on {{post.last_edited.day}}/{{post.last_edited.month}}/{{post.last_edited.year}} at {{post.last_edited.hour}}:{{post.last_edited.minute}}</p>
     <hr>
     {%if request.user == object.author%}
     <div>
-        <span><i class="far fa-edit"></i><a href="{% url 'update_post' post.pk%}" style="color: green;">Edit</a></span>
-        <span><i class="fas fa-trash"></i><a href="{% url 'delete_post' post.pk %}" style="color: #ec3e3e;">Delete</a></span>
+        <span><i class="far fa-edit" style="color: green;"></i> <a href="{% url 'update_post' post.pk%}" style="color: green;">Edit</a></span>
+        <span><i class="fas fa-trash" style="color: #ec3e3e;"></i> <a href="{% url 'delete_post' post.pk %}" style="color: #ec3e3e;">Delete</a></span>
     </div>
     {%endif%}
     <p>Back to <a href="{% url 'post_list' %}">All posts</a>.

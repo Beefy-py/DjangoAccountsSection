@@ -4,8 +4,13 @@
 <section class="form-container">
     <article id="create-post-container">
         <h1 style="font-size: xx-large;">New Post</h1>
-        <form action="" id="login-form" method="POST">
+        <form action="" id="login-form" method="POST" enctype="multipart/form-data">
             {%csrf_token%}
+            <div class="field-wrapper">
+                {% render_field form.header_image.errors %}
+                {% render_field form.header_image_tag %}
+                {% render_field form.header_image required=true %}
+            </div>
             <div class="field-wrapper">
                 {% render_field form.title.errors %}
                 {% render_field form.title.label_tag %}
@@ -14,7 +19,7 @@
             <div class="field-wrapper">
                 {% render_field form.body.errors %}
                 {% render_field form.body.label_tag %}
-                {% render_field form.body placeholder='content...'%}
+                {% render_field form.body placeholder='content...' minlength="300"%}
             </div>
             <input type="submit" value="Post">
         </form>

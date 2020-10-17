@@ -7,6 +7,11 @@
         <form action="" id="login-form" method="POST">
             {%csrf_token%}
             <div class="field-wrapper">
+                {% render_field form.header_image.errors %}
+                {% render_field form.header_image_tag %}
+                {% render_field form.header_image%}
+            </div>
+            <div class="field-wrapper">
                 {% render_field form.title.errors %}
                 {% render_field form.title.label_tag %}
                 {% render_field form.title%}

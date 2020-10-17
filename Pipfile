@@ -12,6 +12,7 @@ bs4 = "*"
 django-widget-tweaks = "*"
 jinja2 = "*"
 grep = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"

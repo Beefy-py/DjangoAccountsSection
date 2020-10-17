@@ -13,7 +13,7 @@ from .models import Post
 class BlogListView(ListView):
     model = Post
     template_name = 'blog/home.html'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class BlogListView(ListView):
         return context
 
 
-class PostDetailView(LoginRequiredMixin, DetailView):
+class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/detail_post.html'
 
@@ -33,7 +33,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Post
-    fields = ('title', 'body',)
+    fields = ('header_image', 'title', 'body',)
     template_name = 'blog/update_post.html'
     success_message = 'Post updated!'
 
@@ -52,7 +52,7 @@ class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     template_name = 'blog/create_post.html'
-    fields = ('title', 'body')
+    fields = ('header_image', 'title', 'body')
     success_message = 'Post created!'
 
     def form_valid(self, form):
